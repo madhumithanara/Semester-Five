@@ -1,0 +1,86 @@
+.container-fluid {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+.profile
+{
+	background-image: URL("../img/stars.jpeg");
+	background-size: cover;
+	color: black;
+	text-align: center;
+}
+
+.top-title
+{
+	font-size: 150px;
+	font-family: 'Just Another Hand', cursive;
+	padding-top: 20px;
+}
+
+.title
+{
+	font-size: 8em;
+	padding-top: 20px;
+	padding-bottom: 80px;
+	font-family: 'Oswald', sans-serif;
+	letter-spacing: 3px;
+	text-align: center;
+}
+
+.cell-white
+{
+	background-color: white;
+	color: black;
+	text-align: center;
+}
+
+.cell-black
+{
+	background-color: grey; 
+	color: white;
+	text-align: center;
+}
+
+.cell
+{
+	padding: 30px 30px 30px 30px;
+}
+
+.cell-content
+{
+	padding: 20px 20px 20px 20px;
+	text-align: center;
+	font-family: 'Oswald', sans-serif;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  max-height: 500px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}
+
+.card-button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+  border: 2px solid white;
+}
+
+.card-button:hover
+{
+	background-color: white;
+	border: 2px solid black;
+	color: black;
+}
+
