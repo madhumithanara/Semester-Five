@@ -35,26 +35,19 @@ long long int fib_parallel(long long int n)
   	}
 }
 
-
 int main()
 {
     long long int n,answer;
 	double start_time,time_taken;
-	int iterations = 10, i;
 	
-	// printf("Enter the nth fibonacci number to print\n");
-	// scanf("%lld",&n);
-	n=0;
-
-	for(i=0;i<iterations;i++)
-	{
-	n= n + 5;
-	printf("\n%lld\n\n",n);
+	printf("Enter the nth fibonacci number to print\n");
+	scanf("%lld",&n);
+	
 	start_time = omp_get_wtime();
 	answer = fib_serial(n);
 	time_taken = omp_get_wtime()-start_time;
     printf("nth fibonacci number is %lld\n",answer);
-	printf("serial %lf s\n",time_taken);
+	printf("Time taken for serial approach is %lf s\n",time_taken);
 
     start_time = omp_get_wtime();
     #pragma omp parallel
@@ -64,7 +57,7 @@ int main()
     }
 	time_taken = omp_get_wtime()-start_time;
     printf("The nth fibonacci number is %lld\n",answer);
-	printf("parallel %lf s\n",time_taken);
+	printf("Time taken for parallel approach is %lf s\n",time_taken);
 
     start_time = omp_get_wtime();
     #pragma omp parallel
@@ -74,7 +67,7 @@ int main()
     }
 	time_taken = omp_get_wtime()-start_time;
     printf("The nth fibonacci number is %lld\n",answer);
-	printf("parallel with taskwait is %lf s\n",time_taken);
-	}
+	printf("Time taken for parallel approach with taskwait is %lf s\n",time_taken);
+
 	return 0;
 } 

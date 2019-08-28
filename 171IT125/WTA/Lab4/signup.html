@@ -24,7 +24,7 @@
   </ul>
 </div>
 
- <form name="signup" action="profile.html" onsubmit="validateForm()">
+ <form name="signup" action="profile.html" onsubmit="return validateForm()">
   <div class="form">
     <h1>Sign Up</h1>
     <p>Please fill in this form to create an account.</p>
@@ -62,13 +62,13 @@ function validateForm()
   if (atposition<1 || dotposition<atposition+2 || dotposition+2>=email.length)
   {  
   alert("Please enter a valid e-mail address");
-  //return false;  
+  return false;  
   }  
 
   if (pswd!=pswdrepeat)
   {
     alert("Password must be same!");  
-    //return false; 
+    return false; 
   }
   return true;
 }  
