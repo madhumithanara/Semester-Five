@@ -49,7 +49,7 @@ SELECT p.Pname, d.Dname, COUNT(*), sum(w.Hours) FROM Project p, Department d, Em
 
 -- 13) Retrieve the project name, controlling department name, number of employees, and total hours worked per week on the project for each project with more than one employee working on it.
 
-SELECT p.Pnumber,p.Pname,COUNT() as employees FROM Project p, Employee e, Works_on w WHERE e.Ssn = w.Essn AND p.Pnumber = w.Pno and p.Dnum = 5 GROUP BY p.Pnumber HAVING COUNT() > 2;
+SELECT p.Pnumber,p.Pname,COUNT(*) as employees FROM Project p, Employee e, Works_on w WHERE e.Ssn = w.Essn AND p.Pnumber = w.Pno and p.Dnum = 5 GROUP BY p.Pnumber HAVING COUNT(*) > 2;
 
 -- 14) Find the names of employees who work on all the projects controlled by department number 5.
 
