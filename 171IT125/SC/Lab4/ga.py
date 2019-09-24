@@ -82,15 +82,11 @@ def fold(dataset, i, k):
 		end_index_train = start_index_test
 		return [dataset[start_index_train:end_index_train], dataset[start_index_test:end_index_test]]
 	else:
-		start_index_train_first = 0
-		end_index_train_first = start_index_test
-		start_index_train_second = end_index_test
-		end_index_train_second = l
 		new_dataset = []
 		for i in range(start_index_test):
 			new_dataset.append(dataset[i])
 		for j in range(end_index_test, l):
-			new_dataset.append(dataset[j])
+			new_dataset.append(dataset[j]) 
 
 		return [new_dataset, dataset[start_index_test:end_index_test]]
 
@@ -170,14 +166,12 @@ def crossover(chromosomes):
         chromosome_1 = random.choice(chromosomes)
         chromosome_2 = random.choice(chromosomes)
 
-        # swap the last 25% of both
         start_index = int((3*len_chromosome)/4)
         for i in range(start_index,len_chromosome):
             chromosome_1[i],chromosome_2[i] = chromosome_2[i],chromosome_1[i]
 
 def mutation(chromosomes):
     len_chromosome = len(chromosomes[0])
-    # no_of_flips = len(len_chromosome/10)
     no_of_flips = 15
     for chromosome in chromosomes:
         for i in range(no_of_flips):
@@ -188,14 +182,12 @@ def mutation(chromosomes):
 def genetic_algorithm(pop_size, num_features, dataset, len_features):
 
     old_chromosomes = [
-        [random.randint(0, 1) for i in range(num_features)] for j in range(pop_size)
+        [random.choice([0, 1]) for i in range(num_features)] for j in range(pop_size)
     ]
 
-    termination_condition = True
-    iterations = 1
     absolute_best_chromosome = [0 for i in range(num_features)]
     absolute_best_fitness = 0.0
-    while (iterations<100):
+    for i in range(100):
         fitness = []
         for chromosome in old_chromosomes:
             acc = naive_bayes_classifier(dataset,len_features,chromosome)
@@ -213,9 +205,13 @@ def genetic_algorithm(pop_size, num_features, dataset, len_features):
 
         mutation(new_chromosomes)
 
-        iterations += 1
     
-    print('final',absolute_best_chromosome,absolute_best_fitness)
+    print('USING GENETIC ALGORITHM FOR FEATURE SELECTION: ',absolute_best_fitness)
+    print("CHROMOSOMES CHOSEN: ")
+    for i in range(len(absolute_best_chromosome)):
+        if absolute_best_chromosome[i] == 1:
+            print(i+1, end=" ")
+    print("\n")
     
 
 def main():
@@ -225,7 +221,7 @@ def main():
     len_features = len(dataset.columns) - 1
     
     test_chromosome = [1 for i in range(len_features)]
-    print('initial',naive_bayes_classifier(dataset,len_features,test_chromosome))
+    print('USING ONLY NAIVE BAYES: ',naive_bayes_classifier(dataset,len_features,test_chromosome))
 
     genetic_algorithm(30,len_features,dataset,len_features)
 
