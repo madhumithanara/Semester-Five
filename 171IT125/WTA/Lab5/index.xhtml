@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="utf-8"></meta>
+	<title> XHTML Demonstration</title>
+	<script type="text/javascript">
+		function onSubmit(){
+			var name=document.getElementById("name").value;
+			var city=document.getElementById("city").value;
+			var gender=document.forms["feedback"]["gender"].value;
+			var comments=document.forms["feedback"]["comments"].value;
+
+
+			document.getElementById("sub").innerHTML = "You have entered: \n" + "Name: " + name + "\nCity: " + city + "\nGender: " + gender + "\nComments: " +  comments;
+			return false;
+
+			// console.log(name);
+			// console.log(city);
+			// console.log(gender);
+		}
+	</script>
+	<style type="text/css">
+		body{
+			background-image: url("back.jpeg");
+			background-size: cover;
+			color:white;
+		}
+		#onlyform{
+			text-align: center;
+			margin-top: 50px;
+			color: white;
+		}
+		button{
+			text-align: center;
+			margin-left: 45%;
+		}
+	</style>
+</head>
+<body>
+
+	<div id="onlyform">
+		<form name="feedback" onsubmit="return onSubmit()">
+			Name:
+			<input type="text" name="name" placeholder="Enter Name" id="name"></input><br /><br />
+			City:
+			<input type="text" name="city" placeholder="Enter City" id="city"></input><br /><br />
+			Gender:
+			<input type="radio" name="gender" value="Male" />Male
+			<input type="radio" name="gender" value="Female" />Female
+			<input type="radio" name="gender" value="Other" />Other
+			<br />
+			<br />
+			Comments:<br/><textarea name="comments" rows="4" cols="50"></textarea><br/><br/>
+			<input type="submit" value="Submit"/>
+		</form>
+	</div>
+	<br/><br/>
+
+	<button onclick="location.href = './slide.xhtml';" id="myButton">Enter Slideshow!</button><br/>
+	<a href = "feedback.xhtml"><button>Feedback!</button></a><br/>
+
+	<h3>Submissions</h3>
+	<p id ="sub"></p>
+
+</body>
+</html>

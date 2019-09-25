@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Slides!</title>
+	<script type="text/javascript">
+		var imgArray = new Array(
+		"1.jpg","2.jpg","3.jpg","4.jpg","5.jpg"
+		);
+		
+		numImages = 5;
+		curImage = 1;
+		
+		function f_slideshow( xflip ) {
+		curImage = curImage + xflip;
+		if (curImage > numImages)
+		{ curImage = 1 ; } 
+		if (curImage == 0)
+		{ curImage = numImages ; } 
+		document.getElementById("myImg").src = imgArray[curImage-1]; 
+		}
+	</script>
+</head>
+<body>
+	Click on the buttons to flip through the photos - allow a few seconds for 
+	each photo to load.
+	
+	
+	<input type="button" value="Prev" name="cb_prev" 
+	onclick="f_slideshow(-1)"/>
+	<input type="button" value="Next" name="cb_next" 
+	onclick="f_slideshow(1)"/>
+	
+	<img id="myImg" src='2.jpg'/> 
+</body>
+</html>
+
+
+
+
