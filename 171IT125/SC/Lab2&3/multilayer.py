@@ -1,3 +1,5 @@
+#multi layer perceptron implementation
+
 from random import randrange
 from random import random
 from csv import reader

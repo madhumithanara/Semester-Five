@@ -1,3 +1,5 @@
+#Lab 1 - Naive Bayes Implementation from scratch
+
 import csv
 
 def getTrainandTest(pos, fold_size, records):

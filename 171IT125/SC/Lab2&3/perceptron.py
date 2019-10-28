@@ -1,3 +1,5 @@
+#Single Layer Perceptron
+
 from random import randrange
 from csv import reader
 from sklearn.metrics import confusion_matrix

@@ -1,3 +1,5 @@
+#Genetic algorithm implementation
+
 import pandas as pd
 import math
 import random
@@ -215,7 +217,6 @@ def genetic_algorithm(pop_size, num_features, dataset, len_features):
     
 
 def main():
-    # Spect and spectf give 98% but iris gives 85???
     filename = 'SPECT.csv'
     dataset = pd.read_csv(filename)
     len_features = len(dataset.columns) - 1
