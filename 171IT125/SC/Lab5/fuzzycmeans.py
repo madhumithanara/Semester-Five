@@ -1,4 +1,3 @@
-
 import pandas as pd
 import numpy as np
 import random
@@ -6,7 +5,7 @@ import operator
 import math
 
 
-df_full = pd.read_csv("SPECTF.csv")
+df_full = pd.read_csv("SPECTF_New.csv")
 columns = list(df_full.columns)
 features = columns[:len(columns)-1]
 class_labels = list(df_full[columns[-1]])
@@ -68,7 +67,7 @@ def accuracy(cluster_labels, class_labels):
     precision = [p0*100,p1*100]
     recall = [r0*100,r1*100]
     
-    return accuracy, precision, recall
+    return accuracy, precision, recall, tp, tn, fp, fn
 
 
 def initializeMembershipMatrix():
@@ -132,8 +131,19 @@ def fuzzyCMeansClustering():
 
 
 labels, centers = fuzzyCMeansClustering()
-a,p,r = accuracy(labels, class_labels)
+a,p,r, tp, tn, fp, fn = accuracy(labels, class_labels)
 
-print("Accuracy = " + str(a))
-print("Precision = " + str(p))
-print("Recall = " + str(r))
+cluster_num = -100
+
+if a[0] >= a[1]:
+    cluster_num = 0
+else:
+    cluster_num = 1
+
+print("Confusion Matrix")
+print([tp[cluster_num],fp[cluster_num]])
+print([fn[cluster_num],tn[cluster_num]])
+
+print("\n\nAccuracy = " + str(a[cluster_num]))
+print("Precision = " + str(p[cluster_num]))
+print("Recall = " + str(r[cluster_num]))

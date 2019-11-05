@@ -3,7 +3,8 @@
 -- and received the rating (stars). Then referencing only view TNS 
 -- and table Movie, write a SQL query that returns the lastest year 
 -- of any movie reviewed by Chris Jackson. You may assume movie names are unique.
-create view TNS as select title,name,stars 
+create view 
+	TNS as select title,name,stars 
 	from Movie M inner join Rating R on M.mID=R.mID inner join Reviewer Re on Re.rID=R.rID;
 
 select max(year) from Movie M inner join TNS T on M.title=T.title and name="Chris Jackson";

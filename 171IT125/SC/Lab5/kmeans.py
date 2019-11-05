@@ -46,7 +46,7 @@ def accuracy(cluster_labels, class_labels):
     precision = [p0*100,p1*100]
     recall = [r0*100,r1*100]
     
-    return accuracy, precision, recall
+    return accuracy, precision, recall, tp, tn, fp, fn
 
 
 def initializeCenters(df, k):
@@ -111,19 +111,20 @@ df = df_full[features]
 
 
 labels, centers = kmeans(df, k, class_labels)
-a,p,r = accuracy(labels, class_labels)
 
-# cluster0 = 0
-# cluster1 = 0
-# for i in labels:
-#     if i == 0:
-#         cluster0 += 1
-#     else:
-#         cluster1 += 1
-# print("Number of data points in Cluster 0: " + str(cluster0))
-# print("Number of data points in Cluster 1: " + str(cluster1))
+a,p,r, tp, tn, fp, fn = accuracy(labels, class_labels)
 
+cluster_num = -100
 
-print("Accuracy = " + str(a))
-print("Precision = " + str(p))
-print("Recall = " + str(r))
+if a[0] >= a[1]:
+    cluster_num = 0
+else:
+    cluster_num = 1
+
+print("Confusion Matrix")
+print([tp[cluster_num],fp[cluster_num]])
+print([fn[cluster_num],tn[cluster_num]])
+
+print("\n\nAccuracy = " + str(a[cluster_num]))
+print("Precision = " + str(p[cluster_num]))
+print("Recall = " + str(r[cluster_num]))

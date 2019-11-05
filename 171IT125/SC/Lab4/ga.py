@@ -224,7 +224,7 @@ def main():
     test_chromosome = [1 for i in range(len_features)]
     print('USING ONLY NAIVE BAYES: ',naive_bayes_classifier(dataset,len_features,test_chromosome))
 
-    genetic_algorithm(30,len_features,dataset,len_features)
+    genetic_algorithm(50,len_features,dataset,len_features)
 
 if __name__ == '__main__':
     main()
